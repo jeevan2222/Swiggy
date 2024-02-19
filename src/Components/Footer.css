@@ -1,0 +1,20 @@
+.footer {
+  /* position: fixed; */
+  margin-top: 30px;
+  bottom: 0;
+  text-align: center;
+  padding-top: 75px;
+  font-size: larger;
+  height: 150px;
+  color: #fff;
+  left: 0;
+  right: 0;
+  background-color: rgba(230, 117, 117, 0.817);
+}
+.social i {
+  margin-left: 50px;
+  font-size: 30px;
+}
+i:hover {
+  background-color: #ad2d2d1b;
+}

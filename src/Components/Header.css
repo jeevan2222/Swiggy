@@ -1,0 +1,119 @@
+.Header {
+  background-color: #9e9eb1;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-header {
+  margin-right: 150px;
+}
+.logo {
+}
+.App-header ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.App-header li {
+  list-style: none;
+  margin: 10px;
+}
+
+.App-header li a {
+  text-decoration: none;
+  color: rgb(96, 27, 158);
+}
+.App-header li a {
+}
+.card-items {
+  margin-top: 50px;
+  height: 300px;
+  width: 250px;
+  background-color: rgb(134, 149, 163);
+  box-sizing: border-box;
+}
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+h5 {
+  line-height: 0;
+  align-content: center;
+  color: #f3f3f3;
+  margin: 10px;
+  padding: 5px;
+}
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.filter {
+  display: flex;
+  justify-content: space-between;
+}
+.top {
+  display: flex;
+  margin-right: 55px;
+  padding: 10px;
+  margin: 20px;
+}
+.top div {
+  margin: 10px;
+}
+.filter-btn {
+  padding: 10px;
+  border: 1px solid gray;
+  margin: 5px;
+  border-radius: 10px;
+}
+.refresh {
+  font-size: 30px;
+  color: rgba(14, 58, 145, 0.731);
+}
+
+.top a {
+  text-decoration: none;
+}
+.filter-btn a:hover {
+  background-color: rgb(212, 212, 210);
+}
+.checked {
+  color: yellow;
+}
+
+.filter input {
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 20px;
+  width: 250px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.input-text {
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+}
