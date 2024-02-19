@@ -27,10 +27,10 @@ const High = () => {
               <Link to={`/about`}>About Us</Link>
             </li>
             <li>
-              <Link to={`/cart`}>Cart {cart.item.length}</Link>{" "}
+              <Link to={`/cart`}>Cart {cart.item.length===0?'':cart.item.length}</Link>{" "}
             </li>
             <li>
-              <Link onClick={() => dispatch(clearCart())}>ClearCart</Link>{" "}
+              <Link to={`/cart`} onClick={() => dispatch(clearCart())}>ClearCart</Link>{" "}
             </li>
           </ul>
         </header>

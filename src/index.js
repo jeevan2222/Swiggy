@@ -12,7 +12,7 @@ import RestaurantsMen from "./Components/RestaurantsMen";
 import { Provider } from "react-redux";
 import High from "./Components/High";
 import appStore from "./utils/Appstore";
-import Cart from "./Components/cart";
+import CartItem from "./Components/CartItem";
 function App() {
   return (
     <Provider store={appStore}>
@@ -46,9 +46,9 @@ const router = createBrowserRouter([
         element: <RestaurantsMen />,
       },
       {
-        path: "/cart",
-        element: <Cart />,
-      },
+        path:"/cart",
+        element:<CartItem />
+      }
     ],
     errorElement: <Error />,
   },

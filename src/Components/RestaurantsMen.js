@@ -8,7 +8,7 @@ import b from "../utils/b.jpg";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer";
 import { addItem, removeItem } from "../utils/CardSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 const RestaurantsMen = () => {
   const [resMenu, setResMenu] = useState([]);
@@ -18,6 +18,8 @@ const RestaurantsMen = () => {
   const { id } = useParams();
 
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
 
   useEffect(() => {
     getRestaurant();
