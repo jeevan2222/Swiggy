@@ -1,8 +1,14 @@
 import React from "react";
-import "./Header.css";
-import j from "./public/j.png";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { clearCart } from "../utils/CardSlice";
+import j from "./public/j.png";
+import "./Header.css";
+
 const High = () => {
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div className="Header">
@@ -21,7 +27,10 @@ const High = () => {
               <Link to={`/about`}>About Us</Link>
             </li>
             <li>
-              <Link to={`/#`}>Cart</Link>
+              <Link to={`/cart`}>Cart {cart.item.length}</Link>{" "}
+            </li>
+            <li>
+              <Link onClick={() => dispatch(clearCart())}>ClearCart</Link>{" "}
             </li>
           </ul>
         </header>

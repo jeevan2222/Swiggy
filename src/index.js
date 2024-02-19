@@ -9,15 +9,18 @@ import reportWebVitals from "./reportWebVitals";
 import Error from "./Components/Error";
 import Header from "./Components/Header";
 import RestaurantsMen from "./Components/RestaurantsMen";
-
+import { Provider } from "react-redux";
 import High from "./Components/High";
-
+import appStore from "./utils/Appstore";
+import Cart from "./Components/cart";
 function App() {
   return (
-    <div>
-      <High />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <div>
+        <High />
+        <Outlet />
+      </div>
+    </Provider>
   );
 }
 
@@ -41,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantsMen />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

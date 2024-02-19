@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import b from "../utils/b.jpg";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer";
+import { addItem, removeItem } from "../utils/CardSlice";
+import { useDispatch } from "react-redux";
 
 const RestaurantsMen = () => {
   const [resMenu, setResMenu] = useState([]);
@@ -15,9 +17,11 @@ const RestaurantsMen = () => {
   const [name, setName] = useState("");
   const { id } = useParams();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getRestaurant();
-  }, []);
+  }, [getRestaurant]);
 
   async function getRestaurant() {
     try {
@@ -38,6 +42,10 @@ const RestaurantsMen = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+  }
+
+  function handleDispatch(item) {
+    dispatch(addItem(item));
   }
 
   return (
@@ -68,7 +76,14 @@ const RestaurantsMen = () => {
                 />
                 <h5>{menuItem.card.info.name}</h5>
                 <h5>{menuItem.card.info.price || 250}</h5>
-                <button>Add Card</button>
+                <button
+                  onClick={() => {
+                    handleDispatch(menuItem);
+                  }}
+                >
+                  Add Card
+                </button>
+                <button onClick={() => dispatch(removeItem())}> Remove</button>
               </div>
             ))}
           </div>
