@@ -9,7 +9,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer";
 import { addItem, removeItem } from "../utils/CardSlice";
 import { useDispatch,useSelector } from "react-redux";
-
+import  j from  "../Components/public/j.png"
 const RestaurantsMen = () => {
   const [resMenu, setResMenu] = useState([]);
   const [avgRating, setAvgRating] = useState("");
@@ -31,8 +31,7 @@ const RestaurantsMen = () => {
         `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.406498&lng=78.47724389999999&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
       );
       const data = await response.json();
-  
-       console.log(">>>>>>>>>>>>>>>>>>>>>>>.",data)
+
       const { avgRating, city, name } = data.data.cards[2].card.card.info;
       setAvgRating(avgRating);
       setCity(city);
@@ -75,7 +74,7 @@ const RestaurantsMen = () => {
                   src={imageUrl + menuItem.card.info.imageId}
                   width={250}
                   height={180}
-                  alt={b}
+                  alt={j}
                 />
                 <h5>{menuItem.card.info.name}</h5>
                 
