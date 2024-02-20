@@ -18,16 +18,16 @@ const High = () => {
         <header className="App-header">
           <ul>
             <li>
-              <Link to={`/`}>Home</Link>
+              <Link to={`/`}>Home🏠</Link>
             </li>
             <li>
-              <Link to={"/contact"}>Contact Us</Link>
+              <Link to={"/contact"}>Contact Us🛂</Link>
             </li>
             <li>
-              <Link to={`/about`}>About Us</Link>
+              <Link to={`/about`}>About Us🆎</Link>
             </li>
             <li>
-              <Link to={`/cart`}>Cart {cart.item.length===0?'':cart.item.length}</Link>{" "}
+              <Link to={`/cart`}>Cart🛒{cart.item.length===0?'':cart.item.length}</Link>{" "}
             </li>
             <li>
               <Link to={`/cart`} onClick={() => dispatch(clearCart())}>ClearCart</Link>{" "}

@@ -47,7 +47,12 @@ const Header = () => {
   function refreshData() {
     setRestaurants(refreshoriginalRestaurants);
   }
-
+  function searchHandle(e) {
+    e.preventDefault();
+    const searchValue = e.target
+    console.log(">>>>>>>>>>>>>>>>>>",searchValue)
+  }
+  
   return (
     <div>
       <div className="filter">
@@ -56,10 +61,11 @@ const Header = () => {
             class="input-text"
             type="text"
             id="location"
+         
             placeholder="Search  Restaurants"
           />
-          <div className="search-icon">
-            <FaSearch />
+          <div  onClick={()=>{searchHandle()}}  className="search-icon">
+            < FaSearch />
           </div>
         </p>
         <p className="top">
