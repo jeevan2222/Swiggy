@@ -4,10 +4,9 @@ import "./RestaurantsMen.css";
 import imageUrl from "../utils/images";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import b from "../utils/b.jpg";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer";
-import { addItem, removeItem } from "../utils/CardSlice";
+import { addItem, clearCart } from "../utils/CardSlice";
 import { useDispatch,useSelector } from "react-redux";
 import  j from  "../Components/public/j.png"
 const RestaurantsMen = () => {
@@ -50,6 +49,14 @@ const RestaurantsMen = () => {
     dispatch(addItem(item));
   }
 
+  function handleRemoveItem(removeItem) {
+   
+    const updatedCart = cart.item.filter(item => item.card.info.id !== removeItem.card.card.info.id);
+    dispatch(clearCart())
+    dispatch(addItem(updatedCart));
+  }
+  
+
   return (
     <div>
       {resMenu.length ? (
@@ -84,9 +91,9 @@ const RestaurantsMen = () => {
                     handleDispatch(menuItem);
                   }}
                 >
-                  Add Card
+                  Add To Card
                 </button>
-                <button onClick={() => dispatch(removeItem())}> Remove</button>
+                <button onClick={() => handleRemoveItem(menuItem)} > Remove</button>
               </div>
             ))}
           </div>

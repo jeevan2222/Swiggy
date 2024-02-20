@@ -81,7 +81,7 @@ const CartItem = () => {
             </div>
             {cart.item.length > 0 && (
                 <div>
-                    <h2> Total Price: {totalPrice} </h2>
+                    <h2> Total Price: {totalPrice/100} </h2>
                     <button onClick={handleOrder}>Order Now</button>
                     {paymentError && <p style={{ color: 'red' }}>{paymentError}</p>}
                 </div>
