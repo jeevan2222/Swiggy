@@ -10,7 +10,7 @@ const High = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="stickyheader">
       <div className="Header">
         <div className="logo">
           <img src={j} width={200} height={150} alt="logo" />

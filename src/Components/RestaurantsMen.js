@@ -46,12 +46,16 @@ const RestaurantsMen = () => {
   }
 
   function handleDispatch(item) {
+
+    console.log("dispact item>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:", item);
     dispatch(addItem(item));
   }
 
   function handleRemoveItem(removeItem) {
+console.log("???????????????????????????????????????????????????????????",removeItem)
+    const {id} =removeItem?.card?.info?.id
    
-    const updatedCart = cart.item.filter(item => item.card.info.id !== removeItem.card.card.info.id);
+    const updatedCart = cart.item.filter(item => item.card.info.id !== id);
     dispatch(clearCart())
     dispatch(addItem(updatedCart));
   }
@@ -93,7 +97,7 @@ const RestaurantsMen = () => {
                 >
                   Add To Card
                 </button>
-                <button onClick={() => handleRemoveItem(menuItem)} > Remove</button>
+                {/* <button onClick={() => handleRemoveItem(menuItem)} > Remove</button> */}
               </div>
             ))}
           </div>

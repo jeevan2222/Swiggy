@@ -1,5 +1,5 @@
 .footer {
-  /* position: fixed; */
+  position: fixed;
   margin-top: 30px;
   bottom: 0;
   text-align: center;
@@ -9,7 +9,7 @@
   color: #fff;
   left: 0;
   right: 0;
-  background-color: rgba(230, 117, 117, 0.817);
+  background-color: rgba(230, 117, 117, 1);
 }
 .social i {
   margin-left: 50px;

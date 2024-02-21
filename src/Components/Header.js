@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +16,8 @@ const Header = () => {
   const [refreshoriginalRestaurants, setRefreshOriginalRestaurants] = useState(
     []
   );
+ const [searchResults, setSearchResults] = useState([]);
+  const searchResult = useRef('');
 
   async function logMovies() {
     try {
@@ -28,6 +30,7 @@ const Header = () => {
       setRestaurants(data);
       setOriginalRestaurants(data);
       setRefreshOriginalRestaurants(data);
+      setSearchResults(data)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -47,11 +50,18 @@ const Header = () => {
   function refreshData() {
     setRestaurants(refreshoriginalRestaurants);
   }
-  function searchHandle(e) {
-    e.preventDefault();
-    const searchValue = e.target
-    console.log(">>>>>>>>>>>>>>>>>>",searchValue)
-  }
+
+
+  const handleSearchFilter = () => {
+    const searchValue = searchResult.current.value.toLowerCase();
+    const filteredData = searchResults.filter(ele => {
+        const eleName = ele.info.name.toLowerCase();
+        return searchValue.split().every(char => eleName.includes(char));
+    });
+
+    setRestaurants(filteredData);
+};
+
   
   return (
     <div>
@@ -61,10 +71,10 @@ const Header = () => {
             class="input-text"
             type="text"
             id="location"
-         
+            ref={searchResult}
             placeholder="Search  Restaurants"
           />
-          <div  onClick={()=>{searchHandle()}}  className="search-icon">
+          <div  onClick={() => handleSearchFilter()}  className="search-icon">
             < FaSearch />
           </div>
         </p>
@@ -84,7 +94,7 @@ const Header = () => {
       </div>
 
       <div className="card">
-        {restaurants.length ? (
+        {restaurants.length && (
           restaurants.map((item, index) => (
             <div className="card-items" key={index}>
               <Link to={`/restaurant/${item.info.id}`}>
@@ -110,10 +120,9 @@ const Header = () => {
               </h5>
             </div>
           ))
-        ) : (
-          <div class="loader"></div>
         )}
       </div>
+      {restaurants.length <= 0 && <div class="loader"></div>}
       <Footer />
     </div>
   );
