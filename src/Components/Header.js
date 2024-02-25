@@ -16,13 +16,15 @@ const Header = () => {
   const [refreshoriginalRestaurants, setRefreshOriginalRestaurants] = useState(
     []
   );
+  const [userLocation, setUserLocation] = useState(null);
  const [searchResults, setSearchResults] = useState([]);
   const searchResult = useRef('');
 
   async function logMovies() {
     try {
+      
       const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${userLocation.latitude}&lng=${userLocation.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
       );
       const movies = await response.json();
       let data =
@@ -36,9 +38,40 @@ const Header = () => {
     }
   }
 
-  useEffect(() => {
-    logMovies();
-  }, []);
+
+
+
+
+  const getUserLocation = () => {
+
+    if (navigator.geolocation) {
+ 
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+      
+          const { latitude, longitude } = position.coords;
+      
+          setUserLocation({ latitude, longitude });
+        },
+        (error) => {
+          console.error('Error getting user location:', error);
+        }
+      );
+    }
+    else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  };
+
+useEffect(() => {
+    getUserLocation();
+}, []);
+
+useEffect(() => {
+    if (userLocation) {
+        logMovies();
+    }
+}, [userLocation]);
 
   function filterRating() {
     const filteredRestaurants = originalRestaurants.filter(
@@ -122,7 +155,7 @@ const Header = () => {
           ))
         )}
       </div>
-      {restaurants.length <= 0 && <div class="loader"></div>}
+      {restaurants.length <=0 && <div class="loader"></div>}
       <Footer />
     </div>
   );

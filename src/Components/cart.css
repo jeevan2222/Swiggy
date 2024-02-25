@@ -27,3 +27,7 @@
     color: #666;
     font-size: 16px;
 }
+.price{
+    max-width: 460px;
+    margin: 0 auto;
+}

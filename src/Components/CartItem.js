@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./cart.css"
 import { useSelector } from 'react-redux';
 import imageUrl from "../utils/images";
+import Footer from './Footer';
 
 const CartItem = () => {
     const [paymentError, setPaymentError] = useState(null);
@@ -80,7 +81,7 @@ const CartItem = () => {
                 )}
             </div>
             {cart.item.length > 0 && (
-                <div>
+                <div className='price'>
                     <h2> Total Price: {totalPrice/100} </h2>
                     <button onClick={handleOrder}>Order Now</button>
                     {paymentError && <p style={{ color: 'red' }}>{paymentError}</p>}
