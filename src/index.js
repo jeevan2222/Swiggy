@@ -54,7 +54,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-// Render the RouterProvider wrapping your App
+// Render the RouterProvider wrapping your 
 ReactDOM.render(
   <React.StrictMode>
     <RouterProvider router={router}>
