@@ -30,14 +30,15 @@ const RestaurantsMen = () => {
         `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.406498&lng=78.47724389999999&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
       );
       const data = await response.json();
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>",data);
 
-      const { avgRating, city, name } = data.data.cards[2].card.card.info;
+      const { avgRating, city, name } = data.data.cards[0].card.card.info;
       setAvgRating(avgRating);
       setCity(city);
       setName(name);
     
       const menuItems =
-        data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card
+        data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card
           ?.card.itemCards;
       setResMenu(menuItems);
     } catch (error) {
